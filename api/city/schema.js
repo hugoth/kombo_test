@@ -28,4 +28,6 @@ const CitySchema = new mongoose.Schema({
 CitySchema.index({
   name: "text"
 });
+// Index creation for searching string query
+
 module.exports = CitySchema;

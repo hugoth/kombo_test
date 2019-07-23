@@ -64,16 +64,17 @@ async function searchCity(req, res) {
       if (cities.length === 0) {
         res.json({ error: "City not found" }).status(603);
       } else {
-        console.log(cities);
-        let finalCities = [];
+        let selectedCities = [];
         for (i = 0; i < cities.length; i++) {
           let shortCity = {
             name: cities[i].translation_city[locale],
             country: cities[i].translation_country[locale],
             coordinates: cities[i].coordinates
           };
-          finalCities.push(shortCity);
+          selectedCities.push(shortCity);
         }
+        const finalCities = selectedCities.slice(0, 20);
+        // Limits to 20 the number of cities returned
         res.json(finalCities).status(200);
       }
     } else {
