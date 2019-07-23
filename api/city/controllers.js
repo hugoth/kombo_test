@@ -47,7 +47,7 @@ async function searchCity(req, res) {
   }
   try {
     const { city, locale } = req.body;
-    if (Boolean(city.length < 0)) {
+    if (Boolean(city === " ")) {
       res.json({ err: "Receive no query string" }).status(600);
     }
 
@@ -58,7 +58,7 @@ async function searchCity(req, res) {
     ) {
       const cities = await City.find({
         name: { $regex: `${city}`, $options: "i" }
-        // Searching method with MongoDB, and option "i" to case insensitive
+        // Searching method with MongoDB, add option "i" to case insensitive
       });
 
       if (cities.length === 0) {
