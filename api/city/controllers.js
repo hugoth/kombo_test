@@ -25,7 +25,7 @@ async function createCity(req, res) {
     await newCity.save();
     res.json(newCity).status(200);
   } catch (err) {
-    res.json(err);
+    res.json({ err: err.message });
   }
 }
 
@@ -34,7 +34,7 @@ async function getCities(_, res) {
     const cities = await City.find();
     res.json(cities).status(200);
   } catch (err) {
-    res.json(err);
+    res.json({ err: err.message });
   }
 }
 
@@ -81,7 +81,7 @@ async function searchCity(req, res) {
       res.json({ err: "Please fill a valid locale indicator" }).status(601);
     }
   } catch (err) {
-    res.json(err);
+    res.json({ err: err.message });
   }
 }
 module.exports.createCity = createCity;
