@@ -1,5 +1,12 @@
 const City = require("./model");
 
+// Status Code =>
+
+// 200 : Response ok
+// 600 : Receive no query string
+// 601 : Invalid locale indicator
+// 602 : City not found
+
 async function createCity(req, res) {
   try {
     const city = req.body;
@@ -62,7 +69,7 @@ async function searchCity(req, res) {
       });
 
       if (cities.length === 0) {
-        res.json({ error: "City not found" }).status(603);
+        res.json({ error: "City not found" }).status(602);
       } else {
         let selectedCities = [];
         for (i = 0; i < cities.length; i++) {

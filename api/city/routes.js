@@ -6,3 +6,4 @@ router.post("/city/create", controller.createCity);
 router.get("/cities", controller.getCities);
 router.post("/city/search", controller.searchCity);
 module.exports = router;
+ 
